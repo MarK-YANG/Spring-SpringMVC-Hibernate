@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/")
-public class HomeController {
+public class MainController {
 
     @Autowired
     private UserService userService;
@@ -40,7 +40,5 @@ public class HomeController {
     public List<User> json(){
       return userService.getAllUsernames();
     }
-
-
 
 }
