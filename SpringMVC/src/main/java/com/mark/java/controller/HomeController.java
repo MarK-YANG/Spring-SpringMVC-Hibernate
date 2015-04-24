@@ -1,11 +1,12 @@
-package com.mark.java;
+package com.mark.java.controller;
 
+import com.mark.java.service.UserService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by mark on 4/24/15.
@@ -15,6 +16,9 @@ import java.util.Map;
 @RequestMapping("/")
 public class HomeController {
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("")
     public String home(){
         return "index";
@@ -22,13 +26,8 @@ public class HomeController {
 
     @RequestMapping("/json")
     @ResponseBody
-    public Map<String, String> json(){
-        Map<String, String> result = new HashMap<String, String>();
-        result.put("China", "Ni Hao");
-        result.put("USA", "Hello");
-        result.put("Russia", "HE HE");
-
-        return result;
+    public List<String> json(){
+      return userService.getAllUsernames();
     }
 
 
